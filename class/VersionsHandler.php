@@ -85,12 +85,12 @@ class VersionsHandler extends \XoopsPersistableObjectHandler
             $slug = 'version';
         }
 
+        $slug = $xoopsDB->escape($slug);
         $baseSlug = $slug;
         $counter = 1;
 
         /* Check whether slug already exists */
         while (true) {
-            $slug = $xoopsDB->escape($slug);
             if ($this->checkSlugUnique($slug, $versionId)) {
                 break;
             } else {
@@ -145,6 +145,8 @@ class VersionsHandler extends \XoopsPersistableObjectHandler
     function getIdBySlug($slug)
     {
         global $xoopsDB;
+
+        $slug = $xoopsDB->escape($slug);
 
         $sql = '
             SELECT version_id
