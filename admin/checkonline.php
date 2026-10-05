@@ -65,9 +65,10 @@ switch ($op)
                     //first create version
                     $versionsObj = $versionsHandler->create();
                     // Set Vars
-                    $versionName = htmlspecialchars($checkonlineHandler->xml2str($onlineversion->version_name), ENT_XML1 | ENT_QUOTES, 'UTF-8');
+                    $decodedVersionName = $checkonlineHandler->xml2str($onlineversion->version_name);
+                    $versionName = htmlspecialchars($decodedVersionName, ENT_XML1 | ENT_QUOTES, 'UTF-8');
                     $versionsObj->setVar('version_name', $versionName);
-                    $versionSlug = $versionsHandler->createUniqueVersionSlug(mb_strtolower($versionName));
+                    $versionSlug = $versionsHandler->createUniqueVersionSlug(mb_strtolower($decodedVersionName));
                     $versionsObj->setVar('version_slug', $versionSlug);
                     $versionLang = htmlspecialchars($checkonlineHandler->xml2str($onlineversion->version_lang), ENT_XML1 | ENT_QUOTES, 'UTF-8');
                     $versionsObj->setVar('version_lang', $versionLang);
