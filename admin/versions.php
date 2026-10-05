@@ -114,12 +114,12 @@ switch ($op)
         $versionName =  Request::getString('version_name');
         $versionsObj->setVar('version_name', $versionName);
         // Set Var version_slug
-        $versionSlug = preg_replace('/[^a-z0-9]+/', '-', Request::getString('version_slug'));
+        $versionSlug = preg_replace('/[^a-z0-9]+/', '-', mb_strtolower(Request::getString('version_slug')));
         if ('' === $versionSlug) {
-            $versionSlug = $versionsHandler->createUniqueVersionSlug($versionName, $version_id);
+            $versionSlug = $versionsHandler->createUniqueVersionSlug(mb_strtolower($versionName), $version_id);
         } else {
             if (!$versionsHandler->checkSlugUnique($versionSlug, $version_id)) {
-                $versionSlug = $versionsHandler->createUniqueVersionSlug($versionName, $version_id);
+                $versionSlug = $versionsHandler->createUniqueVersionSlug(mb_strtolower($versionName), $version_id);
             }
         }
         $versionsObj->setVar('version_slug', $versionSlug);

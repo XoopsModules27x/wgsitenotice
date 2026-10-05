@@ -38,12 +38,16 @@ if ('' == $versionSlug) {
     $versionId   = Request::getInt('version_id');
 } else {
     $versionId   = $versionsHandler->getIdBySlug($versionSlug);
+    if (0 === $versionId) {
+        // guard if getIdBySlug returns 0 for given slug
+        $versionId = -1;
+    }
 }
 
 $criteriaVersions = new \CriteriaCompo();
 $criteriaVersions->setSort('version_weight');
 $criteriaVersions->setOrder('ASC');
-if ($versionId > 0) {
+if (0 !== $versionId) {
     $criteriaVersions->add(new \Criteria('version_id', $versionId));
 }
 $criteriaVersions->add(new \Criteria('version_current', '1'));

@@ -95,6 +95,9 @@ class VersionsHandler extends \XoopsPersistableObjectHandler
                 break;
             } else {
                 $slug = $baseSlug . '-' . $counter;
+                if (strlen($slug) > 100) {
+                    $slug = substr($baseSlug, 0, 100 - strlen($counter) - 1) . '-' . $counter;
+                }
                 $counter++;
             }
         }
