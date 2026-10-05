@@ -78,3 +78,6 @@
 // ---------------- Admin Others ----------------
 \define('_AM_WGSITENOTICE_MAINTAINEDBY', "est maintenu par");
 // ---------------- End ----------------
+// Version 1.5.0
+\define('_AM_WGSITENOTICE_VERSION_SLUG', 'Slug pour le SEO');
+\define('_AM_WGSITENOTICE_VERSION_SLUG_DESCR', 'Définissez un slug pour le SEO. Seuls les caractères a-z et 0-9 sont autorisés pour le slug ! Le slug doit être unique ! Si vous laissez le champ vide, un slug valide sera créé automatiquement!');

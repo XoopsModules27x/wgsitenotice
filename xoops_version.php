@@ -27,10 +27,10 @@ $dirname = \basename(__DIR__);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => \_MI_WGSITENOTICE_NAME,
-    'version'             => '1.4.4',
+    'version'             => '1.5.0',
     'module_status'       => 'Beta',
-    'release'             => '2025/11/17',
-    'release_date'        => '2025/11/17', // format: yyyy/mm/dd
+    'release'             => '2026/09/30',
+    'release_date'        => '2026/09/30', // format: yyyy/mm/dd
     'description'         => \_MI_WGSITENOTICE_DESC,
     'author'              => 'Goffy (xoops.wedega.com)',
     'author_mail'         => 'webmaster@wedega.com',
@@ -45,7 +45,7 @@ $modversion = [
     'manual'              => 'link to manual file',
     'manual_file'         => \XOOPS_URL."/modules/$dirname/docs/install.txt",
     'min_php'             => '8.4',
-    'min_xoops'           => '2.5.12',
+    'min_xoops'           => '2.7.3',
     'min_admin'           => '1.2',
     'min_db'              => ['mysql' => '5.7.8'],
     'image'               => 'assets/images/wgsitenotice_logo.png',

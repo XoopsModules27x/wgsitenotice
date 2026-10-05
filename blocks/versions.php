@@ -25,8 +25,6 @@ include_once \XOOPS_ROOT_PATH.'/modules/wgsitenotice/include/common.php';
 function b_wgsitenotice_versions_show($options)
 {
 
-    $version_id = XoopsRequest::getInt('version_id');
-    
     $version = [];
     $nb_versions = $options[0];
     $lenght_title = $options[1];
@@ -51,7 +49,10 @@ function b_wgsitenotice_versions_show($options)
             $version_name = \substr($version_name, 0, $lenght_title) . '...';
         }
         $version[$i]['version_name'] = $version_name;
-        $version[$i]['highlight'] = ($versions_arr[$i]->getVar('version_id') == $version_id);
+        $versionSlug = $versions_arr[$i]->getVar('version_slug');
+        $version[$i]['version_slug'] = $versions_arr[$i]->getVar('$versionSlug');
+        $versionId = $versionsHandler->getIdBySlug($versionSlug);
+        $version[$i]['highlight'] = ($versions_arr[$i]->getVar('version_id') == $versionId);
         $j++;
         if ($j < $version_count) {
             $version[$i]['show_more'] = $version_count;

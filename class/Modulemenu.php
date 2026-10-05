@@ -60,7 +60,7 @@ class Modulemenu
             {
                 $items[] = [
                     'name' => $versions_arr[$i]->getVar('version_name'),
-                    'url'  => $urlModule . 'index.php?version_id=' . $versions_arr[$i]->getVar('version_id'),
+                    'url'  => $urlModule . 'index.php?slug=' . $versions_arr[$i]->getVar('version_slug'),
                 ];
             }
         }
