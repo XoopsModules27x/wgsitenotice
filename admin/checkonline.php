@@ -65,11 +65,16 @@ switch ($op)
                     //first create version
                     $versionsObj = $versionsHandler->create();
                     // Set Vars
-                    $versionsObj->setVar('version_name', $checkonlineHandler->xml2str($onlineversion->version_name));
-                    $versionsObj->setVar('version_slug', $checkonlineHandler->xml2str($onlineversion->version_slug));
-                    $versionsObj->setVar('version_lang', $checkonlineHandler->xml2str($onlineversion->version_lang));
-                    $versionsObj->setVar('version_descr', $checkonlineHandler->xml2str($onlineversion->version_descr));
-                    $versionsObj->setVar('version_author', $checkonlineHandler->xml2str($onlineversion->version_author));
+                    $versionName = htmlspecialchars($checkonlineHandler->xml2str($onlineversion->version_name), ENT_XML1 | ENT_QUOTES, 'UTF-8');
+                    $versionsObj->setVar('version_name', $versionName);
+                    $versionSlug = $versionsHandler->createUniqueVersionSlug(mb_strtolower($versionName));
+                    $versionsObj->setVar('version_slug', $versionSlug);
+                    $versionLang = htmlspecialchars($checkonlineHandler->xml2str($onlineversion->version_lang), ENT_XML1 | ENT_QUOTES, 'UTF-8');
+                    $versionsObj->setVar('version_lang', $versionLang);
+                    $versionDescr = htmlspecialchars($checkonlineHandler->xml2str($onlineversion->version_descr), ENT_XML1 | ENT_QUOTES, 'UTF-8');
+                    $versionsObj->setVar('version_descr', $versionDescr);
+                    $versionAuthor = htmlspecialchars($checkonlineHandler->xml2str($onlineversion->version_author), ENT_XML1 | ENT_QUOTES, 'UTF-8');
+                    $versionsObj->setVar('version_author', $versionAuthor);
                     $versionsObj->setVar('version_date', $onlineversion->version_date);
                     // Insert Data
                     if ($versionsHandler->insert($versionsObj)) {
