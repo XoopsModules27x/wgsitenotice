@@ -29,6 +29,7 @@ $start      = Request::getInt('start');
 $img_yes = "<img src='../".$modPathIcon16."/on.png' >";
 $img_no  = "<img src='../".$modPathIcon16."/off.png' >";
 // Switch options
+
 switch ($op)
 {
     case 'list':
@@ -57,6 +58,8 @@ switch ($op)
                 $version['id'] = $versions_arr[$i]->getVar('version_id');
                 // Get Var version_name
                 $version['name'] = $versions_arr[$i]->getVar('version_name');
+                // Get Var version_name
+                $version['slug'] = $versions_arr[$i]->getVar('version_slug');
                 // Get Var version_lang
                 $version['lang'] = $versions_arr[$i]->getVar('version_lang');
                 // Get Var version_descr
@@ -101,17 +104,29 @@ switch ($op)
            \redirect_header('versions.php', 3, \implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
         }
         if (isset($version_id)) {
-           $versionsObj = $versionsHandler->get($version_id);
+            $versionsObj = $versionsHandler->get($version_id);
         } else {
-           $versionsObj = $versionsHandler->create();
+            $versionsObj = $versionsHandler->create();
+            $version_id = 0;
         }
         // Set Vars
         // Set Var version_name
-        $versionsObj->setVar('version_name', Request::getString('version_name'));
+        $versionName =  Request::getString('version_name');
+        $versionsObj->setVar('version_name', $versionName);
+        // Set Var version_slug
+        $versionSlug = Request::getString('version_slug');
+        if ('' === $versionSlug) {
+            $versionSlug = $versionsHandler->createUniqueVersionSlug($versionName, $version_id);
+        } else {
+            if (!$versionsHandler->checkSlugUnique($versionSlug, $version_id)) {
+                $versionSlug = $versionsHandler->createUniqueVersionSlug($versionName, $version_id);
+            }
+        }
+        $versionsObj->setVar('version_slug', $versionSlug);
         // Set Var version_lang
         $versionsObj->setVar('version_lang', Request::getString('version_lang'));
         // Set Var version_descr
-        $versionsObj->setVar('version_descr', Request::getString('version_descr'));
+        $versionsObj->setVar('version_descr', Request::getText('version_descr'));
         // Set Var version_author
         $versionsObj->setVar('version_author', Request::getString('version_author'));
         // Set Var version_weight
@@ -135,7 +150,7 @@ switch ($op)
         if (isset($version_id)) {
             $versionsObj = $versionsHandler->get($version_id);
             // get Vars
-            $version_current = (1 == $versionsObj->getVar('version_current')) ? '0' : '1';
+            $version_current = (1 == (int)$versionsObj->getVar('version_current')) ? 0 : 1;
             // Set Var version_current
             $versionsObj->setVar('version_current', $version_current);
             // Insert Data
@@ -170,7 +185,7 @@ switch ($op)
     break;
     case 'delete':
         $versionsObj = $versionsHandler->get($version_id);
-        if (isset($_REQUEST['ok']) && 1 == (int)$_REQUEST['ok']) {
+        if (1 === Request::getInt('ok')) {
             if ( !$GLOBALS['xoopsSecurity']->check() ) {
                 \redirect_header('versions.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }

@@ -82,3 +82,6 @@ Die Verwendung erfolgt auf eigene Gefahr.');
 // ---------------- Admin Others ----------------
 \define('_AM_WGSITENOTICE_MAINTAINEDBY', ' wird unterstützt durch ');
 // ---------------- End ----------------
+// Version 1.5.0
+\define('_AM_WGSITENOTICE_VERSION_SLUG', 'Slug für SEO');
+\define('_AM_WGSITENOTICE_VERSION_SLUG_DESCR', 'Definieren Sie einen Slug für SEO. Für den Slug sind nur a-z und 0-9 erlaubt! Der Slug muss eindeutig sein! Wenn Sie das Feld leer lassen, wird automatisch ein gültiger Slug erstellt!');

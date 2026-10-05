@@ -200,12 +200,11 @@ class MigrateHelper
      * @param string $line
      * @return array|bool
      */
-    private function getColumns (string $line)
+    private function getColumns(string $line)
     {
-
         $columns = [];
 
-        $arrCol = \explode( ' ', \trim($line));
+        $arrCol = \explode(' ', \trim($line));
         if (\count($arrCol) > 0) {
             $name = \str_replace(['`'], '', $arrCol[0]);
         } else {
@@ -214,19 +213,16 @@ class MigrateHelper
 
         $attributes = \trim(\str_replace([$name, '`'], '', $line));
         if (str_ends_with($attributes, ',')) {
-            $attributes = substr($attributes, 0, strlen($attributes) - 1);
+            $attributes = \substr($attributes, 0, -1);
         }
         $columns['name'] = $name;
-        // update quotes
-        if (\strpos($attributes, "''") > 0) {
-            $attributes = \trim(\str_replace("''", "''''''''" , $attributes));
-        } elseif (\strpos($attributes, "'") > 0) {
-            $attributes = \trim(\str_replace("'", "''" , $attributes));
-        }
+
+        // YAML single-quoted: jedes ' muss zu '' werden
+        $attributes = \str_replace("'", "''", $attributes);
+
         $columns['attributes'] = "' " . $attributes . " '";
 
         return $columns;
-
     }
 
     /**

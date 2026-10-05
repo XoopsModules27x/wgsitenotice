@@ -28,6 +28,7 @@ use XoopsModules\Wgsitenotice\Common\ {
     Migrate,
     MigrateHelper
 };
+use XoopsModules\Wgsitenotice\Helper;
 
 function xoops_module_update_wgsitenotice($module, $prev_version = null)
 {
@@ -73,5 +74,50 @@ function xoops_module_update_wgsitenotice($module, $prev_version = null)
         xoops_error($error);
     }
 
+    if (version_compare($prev_version, '1.5.0', '<')) {
+        //enter code or call your function
+        $ret = wgsitenotice_update_slug($module);
+        if (!$ret) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+/**
+ * @param $module
+ *
+ * @return bool
+ */
+function wgsitenotice_update_slug($module): bool
+{
+    $ret = true;
+
+    $helper = Helper::getInstance();
+    $versionsHandler = $helper->getHandler('Versions');
+
+    if ($versionsHandler->getCount() > 0) {
+        $version_crit = new \CriteriaCompo();
+        $version_crit->setSort('version_weight ASC, version_id');
+        $version_crit->setOrder('ASC');
+        $versions_arr = $versionsHandler->getAll($version_crit);
+        foreach (\array_keys($versions_arr) as $i)
+        {
+            // check whether a valid slug exist
+            $slugOld = $versions_arr[$i]->getVar('version_slug');
+            if ('' == $slugOld) {
+                $versionName = $versions_arr[$i]->getVar('version_name');
+                $slugNew = $versionsHandler->createUniqueVersionSlug($versionName, $i);
+                $versionsObj = $versionsHandler->get($i);
+                $versionsObj->setVar('version_slug', $slugNew);
+                if (!$versionsHandler->insert($versionsObj)) {
+                    return false;
+                }
+           }
+        }
+
+    }
     return $ret;
 }

@@ -37,6 +37,7 @@ class Versions extends \XoopsObject
     {
         $this->initVar('version_id', \XOBJ_DTYPE_INT);
         $this->initVar('version_name', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('version_slug', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('version_lang', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('version_descr', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('version_author', \XOBJ_DTYPE_TXTBOX);
@@ -77,6 +78,10 @@ class Versions extends \XoopsObject
         $form->setExtra('enctype="multipart/form-data"');
         // Form Text version_name
         $form->addElement( new \XoopsFormText(\_AM_WGSITENOTICE_VERSION_NAME, 'version_name', 50, 255, $this->getVar('version_name')), true );
+        // Form Text version_slug
+        $versionSlug = new \XoopsFormText(\_AM_WGSITENOTICE_VERSION_SLUG, 'version_slug', 50, 255, $this->getVar('version_slug'));
+        $versionSlug->setDescription(\_AM_WGSITENOTICE_VERSION_SLUG_DESCR);
+        $form->addElement($versionSlug);
         // Form Text version_lang
         $form->addElement( new \XoopsFormText(\_AM_WGSITENOTICE_VERSION_LANG, 'version_lang', 50, 255, $this->getVar('version_lang')) );
         // Form Text Area

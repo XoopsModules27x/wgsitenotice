@@ -6,6 +6,7 @@
                 <th class="center">&nbsp;</th>
                 <th class="center"><{$smarty.const._AM_WGSITENOTICE_VERSION_ID}></th>
                 <th class="center"><{$smarty.const._AM_WGSITENOTICE_VERSION_NAME}></th>
+                <th class="center"><{$smarty.const._AM_WGSITENOTICE_VERSION_SLUG}></th>
                 <th class="center"><{$smarty.const._AM_WGSITENOTICE_VERSION_LANG}></th>
                 <th class="center"><{$smarty.const._AM_WGSITENOTICE_VERSION_DESCR}></th>
                 <th class="center"><{$smarty.const._AM_WGSITENOTICE_VERSION_AUTHOR}></th>
@@ -21,6 +22,7 @@
                     <td class="center"><img src="<{$wgsitenotice_icons_url}>/16/up_down.png" alt="drag&drop" class="icon-sortable"/></td>
                     <td class="center"><{$list.id}></td>
                     <td class="center"><{$list.name}></td>
+                    <td class="center"><{$list.slug}></td>
                     <td class="center"><{$list.lang}></td>
                     <td class="center"><{$list.descr}></td>
                     <td class="center"><{$list.author}></td>
