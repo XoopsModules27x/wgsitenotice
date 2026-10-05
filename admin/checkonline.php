@@ -66,6 +66,7 @@ switch ($op)
                     $versionsObj = $versionsHandler->create();
                     // Set Vars
                     $versionsObj->setVar('version_name', $checkonlineHandler->xml2str($onlineversion->version_name));
+                    $versionsObj->setVar('version_slug', $checkonlineHandler->xml2str($onlineversion->version_slug));
                     $versionsObj->setVar('version_lang', $checkonlineHandler->xml2str($onlineversion->version_lang));
                     $versionsObj->setVar('version_descr', $checkonlineHandler->xml2str($onlineversion->version_descr));
                     $versionsObj->setVar('version_author', $checkonlineHandler->xml2str($onlineversion->version_author));
@@ -123,6 +124,7 @@ switch ($op)
                     foreach ($xml_arr->versions->version as $onlineversion) {
                         $version['id'] = $onlineversion->version_id;
                         $version['name'] = $checkonlineHandler->xml2str($onlineversion->version_name);
+                        $version['slug'] = $checkonlineHandler->xml2str($onlineversion->version_slug);
                         $version['lang'] = $checkonlineHandler->xml2str($onlineversion->version_lang);
                         $version['descr'] = $checkonlineHandler->xml2str($onlineversion->version_descr);
                         $version['author'] = $checkonlineHandler->xml2str($onlineversion->version_author);

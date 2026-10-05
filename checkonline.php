@@ -58,6 +58,7 @@ if (1 == $oc_allowed) {
             echo "\t<version>\n";
             echo "\t<version_id>".$versions_arr[$i]->getVar('version_id')."</version_id>\n";
             echo "\t<version_name>".$versions_arr[$i]->getVar('version_name')."</version_name>\n";
+            echo "\t<version_slug>".$versions_arr[$i]->getVar('version_slug')."</version_slug>\n";
             echo "\t<version_lang>".$versions_arr[$i]->getVar('version_lang')."</version_lang>\n";
             echo "\t<version_descr>".$versions_arr[$i]->getVar('version_descr')."</version_descr>\n";
             echo "\t<version_author>".$versions_arr[$i]->getVar('version_author')."</version_author>\n";
