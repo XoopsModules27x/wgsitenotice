@@ -54,24 +54,27 @@ class VersionsHandler extends \XoopsPersistableObjectHandler
         // normalize title and convert to lower case
         $slug = trim(mb_strtolower($title, 'UTF-8'));
 
-        /*
-         * Transliteration
-         * Any-Latin:
-         *   Chinese, Cyrillic, Greek ....
-         *
-         * Latin-ASCII:
-         *   é → e
-         *   ä → a
-         *   ñ → n
-         *   ç → c
-         */
-        $transliterator = \Transliterator::create(
-            'Any-Latin; Latin-ASCII'
-        );
+        if (class_exists(\Transliterator::class)) {
+            /*
+             * Transliteration
+             * Any-Latin:
+             *   Chinese, Cyrillic, Greek ....
+             *
+             * Latin-ASCII:
+             *   é → e
+             *   ä → a
+             *   ñ → n
+             *   ç → c
+             */
+            $transliterator = \Transliterator::create(
+                'Any-Latin; Latin-ASCII'
+            );
 
-        if ($transliterator !== null) {
-            $slug = $transliterator->transliterate($slug);
+            if ($transliterator !== null) {
+                $slug = $transliterator->transliterate($slug);
+            }
         }
+
 
         /* replace non-characters/non-digits by - */
         $slug = preg_replace('/[^a-z0-9]+/', '-', $slug);
@@ -100,7 +103,7 @@ class VersionsHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * create a unique slug for version
+     * check the slug uniqueness
      *
      * @param string $slug
      * @param int    $id
@@ -127,5 +130,36 @@ class VersionsHandler extends \XoopsPersistableObjectHandler
         }
 
         return false;
+    }
+
+    /**
+     * get version id based on given slug
+     *
+     * @param string $slug
+     *
+     * @return bool
+     */
+    function getIdBySlug($slug)
+    {
+        global $xoopsDB;
+
+        $sql = '
+            SELECT version_id
+            FROM ' . $xoopsDB->prefix('wgsitenotice_versions'). "
+            WHERE version_slug = '{$slug}'
+        ";
+
+        $result = $xoopsDB->query($sql);
+        if (!$xoopsDB->isResultSet($result) || !($result instanceof \mysqli_result)) {
+            throw new \RuntimeException(
+                \sprintf(_DB_QUERY_ERROR, $sql) . $xoopsDB->error(),
+                E_USER_ERROR,
+            );
+        }
+        while (false !== ($row = $xoopsDB->fetchRow($result))) {
+            return (int)$row[0];
+        }
+
+        return 0;
     }
 }

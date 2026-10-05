@@ -51,6 +51,7 @@ function b_wgsitenotice_versions_show($options)
             $version_name = \substr($version_name, 0, $lenght_title) . '...';
         }
         $version[$i]['version_name'] = $version_name;
+        $version[$i]['version_slug'] = $versions_arr[$i]->getVar('version_slug');
         $version[$i]['highlight'] = ($versions_arr[$i]->getVar('version_id') == $version_id);
         $j++;
         if ($j < $version_count) {

@@ -108,9 +108,10 @@ function wgsitenotice_update_slug($module): bool
             // check whether a valid slug exist
             $slugOld = $versions_arr[$i]->getVar('version_slug');
             if ('' == $slugOld) {
+                $versionId = $versions_arr[$i]->getVar('version_id');
                 $versionName = $versions_arr[$i]->getVar('version_name');
-                $slugNew = $versionsHandler->createUniqueVersionSlug($versionName, $i);
-                $versionsObj = $versionsHandler->get($i);
+                $slugNew = $versionsHandler->createUniqueVersionSlug($versionName, $versionId);
+                $versionsObj = $versionsHandler->get($versionId);
                 $versionsObj->setVar('version_slug', $slugNew);
                 if (!$versionsHandler->insert($versionsObj)) {
                     return false;

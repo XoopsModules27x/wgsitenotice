@@ -33,12 +33,19 @@ $xoTheme->addStylesheet( $style );
 
 $breadcrumb ='<a href="' . \XOOPS_URL . '">' . \_YOURHOME . '</a>  &raquo; ' . $xoopsModule->name();
 
-$version_id = Request::getInt('version_id');
+$versionSlug = Request::getString('slug');
+if ('' == $versionSlug) {
+    $versionId   = Request::getInt('version_id');
+} else {
+    $versionId   = $versionsHandler->getIdBySlug($versionSlug);
+}
 
 $criteriaVersions = new \CriteriaCompo();
 $criteriaVersions->setSort('version_weight');
 $criteriaVersions->setOrder('ASC');
-if ($version_id > 0) $criteriaVersions->add(new \Criteria('version_id', $version_id));
+if ($versionId > 0) {
+    $criteriaVersions->add(new \Criteria('version_id', $versionId));
+}
 $criteriaVersions->add(new \Criteria('version_current', '1'));
 $versions_count = $versionsHandler->getCount($criteriaVersions);
 $versions_arr = $versionsHandler->getAll($criteriaVersions);
@@ -50,7 +57,7 @@ $breadcrumb_subdir = '';
 if ($versions_count > 0) {
     foreach (\array_keys($versions_arr) as $v) {
 
-        if ($version_id > 0) $breadcrumb_subdir = $versions_arr[$v]->getVar('version_name');
+        if ($versionId > 0) $breadcrumb_subdir = $versions_arr[$v]->getVar('version_name');
         $criteriaContents = new \CriteriaCompo();
         $criteriaContents->add(new \Criteria('cont_version_id', $versions_arr[$v]->getVar('version_id')));
         $contents_count = $contentsHandler->getCount($criteriaContents);
