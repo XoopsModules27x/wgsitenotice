@@ -81,6 +81,13 @@ function xoops_module_update_wgsitenotice($module, $prev_version = null)
             return false;
         }
     }
+    // remove temporary files again
+    if (file_exists($fileYaml)) {
+        unlink($fileYaml);
+    }
+    if (file_exists($fileYaml2)) {
+        unlink($fileYaml2);
+    }
 
     return true;
 }
