@@ -23,8 +23,6 @@ namespace XoopsModules\Wgsitenotice\Common;
  * @author       Mamba <mambax7@gmail.com>
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access');
-
 use MyTextSanitizer;
 use XoopsFormDhtmlTextArea;
 use XoopsFormTextArea;
@@ -173,7 +171,7 @@ class SysUtility
      * @param array|null $options
      * @return \XoopsFormDhtmlTextArea|\XoopsFormEditor
      */
-    public static function getEditor(\Xmf\Module\Helper $helper = null, array $options = null)
+    public static function getEditor(?\Xmf\Module\Helper $helper = null, ?array $options = null)
     {
         /** @var Helper $helper */
         if (null === $options) {
@@ -216,7 +214,7 @@ class SysUtility
     public function fieldExists($fieldname, $table)
     {
         global $xoopsDB;
-        $result = $xoopsDB->query("SHOW COLUMNS FROM   $table LIKE '$fieldname'");
+        $result = $xoopsDB->queryF("SHOW COLUMNS FROM   $table LIKE '$fieldname'");
 
         return ($xoopsDB->getRowsNum($result) > 0);
     }

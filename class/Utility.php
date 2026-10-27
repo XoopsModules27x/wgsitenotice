@@ -26,8 +26,6 @@ namespace XoopsModules\Wgsitenotice;
  * @since
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access');
-
 use XoopsModules\Wgsitenotice;
 
 /**
@@ -158,7 +156,7 @@ class Utility
      * @param array|null $options
      * @return \XoopsFormDhtmlTextArea|\XoopsFormEditor
      */
-    public static function getEditor(\Xmf\Module\Helper $helper = null, array $options = null)
+    public static function getEditor(?\Xmf\Module\Helper $helper = null, ?array $options = null)
     {
         /** @var Modulebuilder\Helper $helper */
         if (null === $options) {
