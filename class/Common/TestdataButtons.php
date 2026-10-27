@@ -47,13 +47,13 @@ class TestdataButtons
 
         if (1 == $displaySampleButton) {
             \xoops_loadLanguage('admin/modulesadmin', 'system');
-            $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_' . 'LOAD_SAMPLEDATA'), $helper->url('testdata/index.php?op=load'), 'add');
-            $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_' . 'SAVE_SAMPLEDATA'), $helper->url('testdata/index.php?op=save'), 'add');
-            $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_' . 'CLEAR_SAMPLEDATA'), $helper->url('testdata/index.php?op=clear'), 'alert');
-            //    $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_' . 'EXPORT_SCHEMA'), $helper->url( 'testdata/index.php?op=exportschema'), 'add');
-            $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_' . 'HIDE_SAMPLEDATA_BUTTONS'), '?op=hide_buttons', 'delete');
+            $adminObject->addItemButton(\constant('_CO_WGSITENOTICE_LOAD_SAMPLEDATA'), $helper->url('testdata/index.php?op=load'), 'add');
+            $adminObject->addItemButton(\constant('_CO_WGSITENOTICE_SAVE_SAMPLEDATA'), $helper->url('testdata/index.php?op=save'), 'add');
+            $adminObject->addItemButton(\constant('_CO_WGSITENOTICE_CLEAR_SAMPLEDATA'), $helper->url('testdata/index.php?op=clear'), 'alert');
+            //    $adminObject->addItemButton(\constant('_CO_WGSITENOTICE_EXPORT_SCHEMA'), $helper->url( 'testdata/index.php?op=exportschema'), 'add');
+            $adminObject->addItemButton(\constant('_CO_WGSITENOTICE_HIDE_SAMPLEDATA_BUTTONS'), '?op=hide_buttons', 'delete');
         } else {
-            $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_' . 'SHOW_SAMPLEDATA_BUTTONS'), '?op=show_buttons', 'add');
+            $adminObject->addItemButton(\constant('_CO_WGSITENOTICE_SHOW_SAMPLEDATA_BUTTONS'), '?op=show_buttons', 'add');
             // $displaySampleButton = $config['displaySampleButton'];
         }
     }

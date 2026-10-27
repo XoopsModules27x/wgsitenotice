@@ -50,7 +50,7 @@ function xoops_module_uninstall_wgsitenotice(\XoopsModule $module)
         // The directory exists so rename it
         $date = date('Y-m-d');
         if (!rename($uploadDirectory, $uploadDirectory . "_bak_$date")) {
-            $module->setErrors(sprintf(constant('CO_' . $moduleDirNameUpper . '_ERROR_BAD_DEL_PATH'), $uploadDirectory));
+            $module->setErrors(sprintf(constant('_CO_WGSITENOTICE_ERROR_BAD_DEL_PATH'), $uploadDirectory));
             $success = false;
         }
     }
