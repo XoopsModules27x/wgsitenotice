@@ -21,6 +21,8 @@ namespace XoopsModules\Wgsitenotice;
  */
 //\defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+
 /**
  * Class Helper
  */

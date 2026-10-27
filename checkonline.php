@@ -25,7 +25,7 @@ require_once \dirname(__DIR__) . '/' . $dirname . '/preloads/autoloader.php';
 
 //\defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 include \dirname(__DIR__, 2) . '/mainfile.php';
-require __DIR__ . '/header.php';
+require_once __DIR__ . '/header.php';
 
 $helper = \XoopsModules\Wgsitenotice\Helper::getInstance();
 echo "<?xml version='1.0' encoding='utf-8'?>\n";

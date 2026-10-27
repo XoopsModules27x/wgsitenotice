@@ -23,6 +23,8 @@
  * @return bool|null
  */
 
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+
 use XoopsModules\Wgsitenotice\Common\ {
     Configurator,
     Migrate,
@@ -100,7 +102,6 @@ function xoops_module_update_wgsitenotice($module, $prev_version = null)
  */
 function wgsitenotice_update_slug($module): bool
 {
-    $ret = true;
 
     $helper = Helper::getInstance();
     $versionsHandler = $helper->getHandler('Versions');
@@ -125,7 +126,7 @@ function wgsitenotice_update_slug($module): bool
                 }
            }
         }
-
     }
-    return $ret;
+
+    return true;
 }

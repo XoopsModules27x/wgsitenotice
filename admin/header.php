@@ -59,7 +59,7 @@ $helper->loadLanguage('common');
 include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
 
 xoops_cp_header();
-$adminMenu = new ModuleAdmin();
+$adminMenu = \Xmf\Module\Admin::getInstance();
 
 //load stylesheets and jquery for sortable
 $GLOBALS['xoTheme']->addStylesheet(\WGSITENOTICE_URL . '/assets/css/admin/style.css');

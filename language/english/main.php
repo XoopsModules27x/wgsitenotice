@@ -17,12 +17,12 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 // ---------------- Main ----------------
-\define('_MA_WGSITENOTICE_INDEX', 'Home');
-\define('_MA_WGSITENOTICE_TITLE', 'Site notice');
-\define('_MA_WGSITENOTICE_DESC', 'This module created a site with legal notice (imprint, privacy, dataprotection,...)');
-\define('_MA_WGSITENOTICE_INDEX_DESC', '');
+\define('_MD_WGSITENOTICE_INDEX', 'Home');
+\define('_MD_WGSITENOTICE_TITLE', 'Site notice');
+\define('_MD_WGSITENOTICE_DESC', 'This module created a site with legal notice (imprint, privacy, dataprotection,...)');
+\define('_MD_WGSITENOTICE_INDEX_DESC', '');
 //index.php
-\define('_MA_WGSITENOTICE_THEREARENT_VERSIONS', 'Actually there are no versions available!');
+\define('_MD_WGSITENOTICE_THEREARENT_VERSIONS', 'Actually there are no versions available!');
 // Admin link
-\define('_MA_WGSITENOTICE_ADMIN', 'Admin');
+\define('_MD_WGSITENOTICE_ADMIN', 'Admin');
 // ---------------- End ----------------

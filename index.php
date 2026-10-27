@@ -87,7 +87,7 @@ if ($versions_count > 0) {
         }
     }
 } else {
-    echo \_MA_WGSITENOTICE_THEREARENT_VERSIONS;
+    echo \_MD_WGSITENOTICE_THEREARENT_VERSIONS;
     $GLOBALS['xoopsTpl']->append('contents', []);
 }
 
@@ -105,7 +105,7 @@ $GLOBALS['xoopsTpl']->assign('xoBreadcrumbs', $xoBreadcrumbs);
 wgsitenotice_meta_keywords($helper->getConfig('keywords').', '. \implode(', ', $keywords));
 unset($keywords);
 // description
-wgsitenotice_meta_description(\_MA_WGSITENOTICE_DESC);
+wgsitenotice_meta_description(\_MD_WGSITENOTICE_DESC);
 //
 $GLOBALS['xoopsTpl']->assign('xoops_mpageurl', \WGSITENOTICE_URL.'/contents.php');
 //

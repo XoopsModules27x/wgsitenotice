@@ -25,7 +25,7 @@ namespace XoopsModules\Wgsitenotice\Common;
     $customConfirm = new Common\Confirm(
         ['ok' => 1, 'item_id' => $itemId, 'op' => 'delete'],
         $_SERVER['REQUEST_URI'],
-        \sprintf(\_MA_MYMODULE_FORM_SURE_DELETE,
+        \sprintf(\_MD_MYMODULE_FORM_SURE_DELETE,
         $itemsObj->getCaption()));
     $form = $customConfirm->getFormConfirm();
     $GLOBALS['xoopsTpl']->assign('form', $form->render());
@@ -38,21 +38,21 @@ namespace XoopsModules\Wgsitenotice\Common;
  */
 class Confirm
 {
-    private array $hiddens = [];
-    private string $action  = '';
-    private string $title   = '';
-    private string $label   = '';
-    private string $object  = '';
+    private array $hiddens;
+    private string $action;
+    private string $title;
+    private string $label;
+    private string $object;
 
     /**
      * @public function constructor class
-     * @param string $hiddens
+     * @param array  $hiddens
      * @param string $action
      * @param string $object
      * @param string $title
      * @param string $label
      */
-    public function __construct(array $hiddens, string $action, $object, null|string $title = '', null|string $label = '')
+    public function __construct(array $hiddens, string $action, $object, string $title = '', string $label = '')
     {
         $this->hiddens = $hiddens;
         $this->action  = $action;
@@ -70,9 +70,9 @@ class Confirm
         $moduleDirName      = \basename(__DIR__);
         $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
         //in order to be accessable from user and admin area this should be place in language common.php
-        if (!\defined('CO_' . $moduleDirNameUpper . '_DELETE_CONFIRM')) {
-            \define('CO_' . $moduleDirNameUpper . '_DELETE_CONFIRM', 'Confirm delete');
-            \define('CO_' . $moduleDirNameUpper . '_DELETE_LABEL', 'Do you really want to delete:');
+        if (!\defined('_CO_WGSITENOTICE_DELETE_CONFIRM')) {
+            \define('_CO_WGSITENOTICE_DELETE_CONFIRM', 'Confirm delete');
+            \define('_CO_WGSITENOTICE_DELETE_LABEL', 'Do you really want to delete:');
         }
 
         // Get Theme Form
@@ -80,11 +80,11 @@ class Confirm
             $this->action = \Xmf\Request::getString('REQUEST_URI', '', 'SERVER');
         }
         if ('' === $this->title) {
-            $this->title = \constant('CO_' . $moduleDirNameUpper . '_DELETE_CONFIRM');
+            $this->title = \constant('_CO_WGSITENOTICE_DELETE_CONFIRM');
         }
         if ('' === $this->label) {
 
-            $this->label = \constant('CO_' . $moduleDirNameUpper . '_DELETE_LABEL');
+            $this->label = \constant('_CO_WGSITENOTICE_DELETE_LABEL');
         }
 
         \xoops_load('XoopsFormLoader');

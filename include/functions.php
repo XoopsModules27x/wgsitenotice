@@ -19,6 +19,8 @@
 
 /***************Blocks**************/
 
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+
 /**
 * @param $cats
  * @return string

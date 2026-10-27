@@ -82,6 +82,7 @@ $modversion['templates'][] = ['file' => 'wgsitenotice_admin_footer.tpl', 'descri
 // User
 $modversion['templates'][] = ['file' => 'wgsitenotice_header.tpl', 'description' => ''];
 $modversion['templates'][] = ['file' => 'wgsitenotice_footer.tpl', 'description' => ''];
+$modversion['templates'][] = ['file' => 'wgsitenotice_index.tpl', 'description' => ''];
 
 //if you create a new template in wgsitenotice/templates/user/ then add here the folder name and modversion['templates']
 $arr_templates = ['default' => 'default', 'table' => 'table-style', 'block' => 'block-style', 'xbootstrap' => 'xbootstrap'];
@@ -112,7 +113,7 @@ $modversion['blocks'][] = [
     'description' => \_MI_WGSITENOTICE_B_ALL_VERSIONS,
     'show_func'   => 'b_wgsitenotice_versions_show',
     'edit_func'   => 'b_wgsitenotice_versions_edit',
-    'template'    => "{$dirname}_block_versions.tpl",
+    'template'    => 'wgsitenotice_block_versions.tpl',
     'options'     => '5|0',
 ];
 $modversion['blocks'][] = [
@@ -121,7 +122,7 @@ $modversion['blocks'][] = [
     'description' => \_MI_WGSITENOTICE_COOKIE_REG_DESC,
     'show_func'   => 'b_wgsitenotice_cookie_reg_show',
     'edit_func'   => 'b_wgsitenotice_cookie_reg_edit',
-    'template'    => "{$dirname}_block_cookie_reg.tpl",
+    'template'    => 'wgsitenotice_block_cookie_reg.tpl',
     'options'     => 'cookiesregmarker_' . \md5(\mt_rand()) . '|no-data|no-cookiereg|smarty|0.9|#d6e0eb|#f2f6f9|#000000|30|top|cookiesregsmarty_' . \md5(\mt_rand()),
 ];
 // ------------------- Config ------------------- //

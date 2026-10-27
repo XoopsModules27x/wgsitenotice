@@ -56,38 +56,38 @@ class DirectoryChecker
         $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
         if (!@\is_dir($path)) {
             $path_status = "<img src='$pathIcon16/0.png' >";
-            $path_status .= "$path (" . \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_NOTAVAILABLE') . ') ';
+            $path_status .= "$path (" . \constant('_CO_WGSITENOTICE_DC_NOTAVAILABLE') . ') ';
             $path_status .= "<form action='" . $_SERVER['SCRIPT_NAME'] . "' method='post'>";
             $path_status .= "<input type='hidden' name='op' value='createdir'>";
             $path_status .= "<input type='hidden' name='path' value='$path'>";
             $path_status .= "<input type='hidden' name='redirect' value='$redirectFile'>";
-            $path_status .= "<button class='submit' onClick='this.form.submit();'>" . \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_CREATETHEDIR') . '</button>';
+            $path_status .= "<button class='submit' onClick='this.form.submit();'>" . \constant('_CO_WGSITENOTICE_DC_CREATETHEDIR') . '</button>';
             $path_status .= '</form>';
         } elseif (@\is_writable($path)) {
             $path_status = "<img src='$pathIcon16/1.png' >";
-            $path_status .= "$path (" . \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_AVAILABLE') . ') ';
+            $path_status .= "$path (" . \constant('_CO_WGSITENOTICE_DC_AVAILABLE') . ') ';
             $currentMode = \mb_substr(\decoct(\fileperms($path)), 2);
             if ($currentMode != \decoct($mode)) {
                 $path_status = "<img src='$pathIcon16/0.png' >";
-                $path_status .= $path . \sprintf(\constant('CO_' . $moduleDirNameUpper . '_' . 'DC_NOTWRITABLE'), \decoct($mode), $currentMode);
+                $path_status .= $path . \sprintf(\constant('_CO_WGSITENOTICE_DC_NOTWRITABLE'), \decoct($mode), $currentMode);
                 $path_status .= "<form action='" . $_SERVER['SCRIPT_NAME'] . "' method='post'>";
                 $path_status .= "<input type='hidden' name='op' value='setdirperm'>";
                 $path_status .= "<input type='hidden' name='mode' value='$mode'>";
                 $path_status .= "<input type='hidden' name='path' value='$path'>";
                 $path_status .= "<input type='hidden' name='redirect' value='$redirectFile'>";
-                $path_status .= "<button class='submit' onClick='this.form.submit();'>" . \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_SETMPERM') . '</button>';
+                $path_status .= "<button class='submit' onClick='this.form.submit();'>" . \constant('_CO_WGSITENOTICE_DC_SETMPERM') . '</button>';
                 $path_status .= '</form>';
             }
         } else {
             $currentMode = \mb_substr(\decoct(\fileperms($path)), 2);
             $path_status = "<img src='$pathIcon16/0.png' >";
-            $path_status .= $path . \sprintf(\constant('CO_' . $moduleDirNameUpper . '_' . 'DC_NOTWRITABLE'), \decoct($mode), $currentMode);
+            $path_status .= $path . \sprintf(\constant('_CO_WGSITENOTICE_DC_NOTWRITABLE'), \decoct($mode), $currentMode);
             $path_status .= "<form action='" . $_SERVER['SCRIPT_NAME'] . "' method='post'>";
             $path_status .= "<input type='hidden' name='op' value='setdirperm'>";
             $path_status .= "<input type='hidden' name='mode' value='$mode'>";
             $path_status .= "<input type='hidden' name='path' value='$path'>";
             $path_status .= "<input type='hidden' name='redirect' value='$redirectFile'>";
-            $path_status .= "<button class='submit' onClick='this.form.submit();'>" . \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_SETMPERM') . '</button>';
+            $path_status .= "<button class='submit' onClick='this.form.submit();'>" . \constant('_CO_WGSITENOTICE_DC_SETMPERM') . '</button>';
             $path_status .= '</form>';
         }
 
@@ -136,25 +136,25 @@ $op = Request::getString('op', '', 'POST');
 switch ($op) {
     case 'createdir':
         if (\Xmf\Request::hasVar('path', 'POST')) {
-            $path = $_POST['path'];
+            $path = \Xmf\Request::getString('path');
         }
         if (\Xmf\Request::hasVar('redirect', 'POST')) {
-            $redirect = $_POST['redirect'];
+            $redirect = \Xmf\Request::getString('redirect');
         }
-        $msg = DirectoryChecker::createDirectory($path) ? \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_DIRCREATED') : \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_DIRNOTCREATED');
+        $msg = DirectoryChecker::createDirectory($path) ? \constant('_CO_WGSITENOTICE_DC_DIRCREATED') : \constant('_CO_WGSITENOTICE_DC_DIRNOTCREATED');
         \redirect_header($redirect, 2, $msg . ': ' . $path);
         break;
     case 'setdirperm':
         if (\Xmf\Request::hasVar('path', 'POST')) {
-            $path = $_POST['path'];
+            $path = \Xmf\Request::getString('path');
         }
         if (\Xmf\Request::hasVar('redirect', 'POST')) {
-            $redirect = $_POST['redirect'];
+            $redirect = \Xmf\Request::getString('redirect');
         }
         if (\Xmf\Request::hasVar('mode', 'POST')) {
-            $mode = $_POST['mode'];
+            $mode = \Xmf\Request::getInt('mode');
         }
-        $msg = DirectoryChecker::setDirectoryPermissions($path, $mode) ? \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_PERMSET') : \constant('CO_' . $moduleDirNameUpper . '_' . 'DC_PERMNOTSET');
+        $msg = DirectoryChecker::setDirectoryPermissions($path, $mode) ? \constant('_CO_WGSITENOTICE_DC_PERMSET') : \constant('_CO_WGSITENOTICE_DC_PERMNOTSET');
         \redirect_header($redirect, 2, $msg . ': ' . $path);
         break;
 }
