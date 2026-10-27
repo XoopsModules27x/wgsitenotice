@@ -112,8 +112,7 @@ function b_wgsitenotice_cookie_reg_edit($options)
     unset($criteria);
 
     $cookie = $options[0];
-    //remove existing cookie in order to see results
-    \xoops_setcookie($cookie,"0");
+    \xoops_setcookie($cookie, '', \time() - 3600, '/', '', null, false);
 
     $unique_id = new \XoopsFormText('', 'options[0]', 100, 255, $cookie);
     $form = \_MB_WGSITENOTICE_COOKIE_REG_NAME . ': ' . $unique_id->render() . '<br><br>';
