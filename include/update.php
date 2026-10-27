@@ -23,6 +23,8 @@
  * @return bool|null
  */
 
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+
 use XoopsModules\Wgsitenotice\Common\ {
     Configurator,
     Migrate,

@@ -4,8 +4,7 @@
         <{$block.position}>
         background: <{$block.bg_from}>; 
         background: -moz-linear-gradient(top, <{$block.bg_from}> 0%, <{$block.bg_to}> 100%); 
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<{$block.bg_from}>), color-stop(100%,<{$block.bg_to}>)); 
-        background: -webkit-linear-gradient(top, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%); 
+        background: -webkit-linear-gradient(top, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%);
         background: -o-linear-gradient(top, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%);
         background: -ms-linear-gradient(top, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%); 
         background: linear-gradient(to bottom, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%); 
@@ -49,8 +48,7 @@
        border-right:1px solid #7b92a9; 
        padding:4px;
        background: #ced6df; /* Old browsers */
-       background: -moz-linear-gradient(top, #ced6df0%, #f2f6f9 100%); 
-       background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ced6df), color-stop(100%,#f2f6f9)); 
+       background: -moz-linear-gradient(top, #ced6df0%, #f2f6f9 100%);
        background: -webkit-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 
        background: -o-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 
        background: -ms-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 

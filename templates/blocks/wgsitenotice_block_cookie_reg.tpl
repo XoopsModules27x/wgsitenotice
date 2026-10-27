@@ -4,7 +4,6 @@
         <{$block.position|default:false}>
         background: <{$block.bg_from|default:''}>;
         background: -moz-linear-gradient(top, <{$block.bg_from|default:''}> 0%, <{$block.bg_to|default:''}> 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<{$block.bg_from|default:''}>), color-stop(100%,<{$block.bg_to|default:''}>));
         background: -webkit-linear-gradient(top, <{$block.bg_from|default:''}> 0%,<{$block.bg_to|default:''}> 100%);
         background: -o-linear-gradient(top, <{$block.bg_from|default:''}> 0%,<{$block.bg_to|default:''}> 100%);
         background: -ms-linear-gradient(top, <{$block.bg_from|default:''}> 0%,<{$block.bg_to|default:''}> 100%);
@@ -49,8 +48,7 @@
        border-right:1px solid #7b92a9; 
        padding:4px;
        background: #ced6df; /* Old browsers */
-       background: -moz-linear-gradient(top, #ced6df0%, #f2f6f9 100%); 
-       background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ced6df), color-stop(100%,#f2f6f9)); 
+       background: -moz-linear-gradient(top, #ced6df0%, #f2f6f9 100%);
        background: -webkit-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 
        background: -o-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 
        background: -ms-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 

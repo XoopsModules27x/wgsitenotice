@@ -121,7 +121,7 @@ class VersionsHandler extends \XoopsPersistableObjectHandler
         ";
         /* the current version should not be compared */
         if ($versionId > 0) {
-            $sql .= ' AND version_id != ' . (int)$versionId;
+            $sql .= ' AND version_id != ' . $versionId;
         }
 
         $result = $xoopsDB->query($sql);

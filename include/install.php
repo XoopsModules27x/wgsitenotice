@@ -18,6 +18,8 @@
  */
 //
 
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+
 use XoopsModules\Wgsitenotice;
 use XoopsModules\Wgsitenotice\Common;
 

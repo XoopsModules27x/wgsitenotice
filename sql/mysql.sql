@@ -23,7 +23,7 @@ CREATE TABLE `wgsitenotice_versions` (
   `version_online`  INT(1) NOT NULL DEFAULT '0',
   `version_date`    INT(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`version_id`)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 #
 # Structure table for `wgsitenotice_contents` 6
@@ -37,4 +37,4 @@ CREATE TABLE `wgsitenotice_contents` (
   `cont_weight`     INT(8) NOT NULL DEFAULT '0',
   `cont_date`       INT(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`cont_id`)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;

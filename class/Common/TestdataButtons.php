@@ -22,6 +22,8 @@ namespace XoopsModules\Wgsitenotice\Common;
  * @license         GNU GPL 2 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  */
 
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+
 use Xmf\Request;
 use Xmf\Yaml;
 use XoopsModules\Wgsitenotice\Helper;

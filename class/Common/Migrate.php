@@ -12,6 +12,8 @@ namespace XoopsModules\Wgsitenotice\Common;
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+
 use XoopsModules\Wgsitenotice\Common;
 
 /**
