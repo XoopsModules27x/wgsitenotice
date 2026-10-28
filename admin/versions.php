@@ -38,7 +38,7 @@ switch ($op)
         $GLOBALS['xoopsTpl']->assign('start', $start);
         $limit = XoopsRequest::getInt('limit', $helper->getConfig('adminpager'));
         $template_main = 'wgsitenotice_admin_versions.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->renderNavigation(\basename(__FILE__)));
         $adminMenu->addItemButton(\_AM_WGSITENOTICE_VERSION_ADD, 'versions.php?op=new');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
         $version_crit = new \CriteriaCompo();

@@ -33,7 +33,7 @@ switch ($op)
         $start = Request::getInt('start');
         $limit = Request::getInt('limit', $helper->getConfig('adminpager'));
         $template_main = 'wgsitenotice_admin_contents.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->renderNavigation(\basename(__FILE__)));
         $adminMenu->addItemButton(\_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
         $cont_crit = new \CriteriaCompo();

@@ -60,7 +60,6 @@ include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
 
 xoops_cp_header();
 $adminMenu = \Xmf\Module\Admin::getInstance();
-
 //load stylesheets and jquery for sortable
 $GLOBALS['xoTheme']->addStylesheet(\WGSITENOTICE_URL . '/assets/css/admin/style.css');
 $GLOBALS['xoTheme']->addScript(\WGSITENOTICE_URL . '/assets/js/jquery.js');
