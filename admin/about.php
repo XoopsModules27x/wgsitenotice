@@ -18,6 +18,6 @@
  */
 include_once __DIR__ . '/header.php';
 $template_main = 'wgsitenotice_admin_about.tpl';
-$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
+$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->renderNavigation(\basename(__FILE__)));
 $GLOBALS['xoopsTpl']->assign('about', $adminMenu->renderAbout('', false));
 include_once __DIR__ . '/footer.php';

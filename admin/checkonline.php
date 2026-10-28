@@ -151,7 +151,7 @@ switch ($op)
     case 'default':
     default:
         $template_main = 'wgsitenotice_admin_checkonline.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->renderNavigation(\basename(__FILE__)));
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', \WGSITENOTICE_URL);
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', \WGSITENOTICE_UPLOAD_URL);
         // Get Form

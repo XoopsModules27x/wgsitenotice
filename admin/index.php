@@ -28,6 +28,6 @@ $adminMenu->addInfoBox(\_AM_WGSITENOTICE_STATISTICS);
 $adminMenu->addInfoBoxLine(\_AM_WGSITENOTICE_STATISTICS, '<label>'.\_AM_WGSITENOTICE_THEREARE_VERSIONS.'</label>', $count_versions);
 $adminMenu->addInfoBoxLine(\_AM_WGSITENOTICE_STATISTICS, '<label>'.\_AM_WGSITENOTICE_THEREARE_CONTENTS.'</label>', $count_contents);
 // Render Index
-echo $adminMenu->addNavigation('index.php');
+echo $adminMenu->renderNavigation('index.php');
 echo $adminMenu->renderIndex();
 include_once __DIR__ . '/footer.php';
