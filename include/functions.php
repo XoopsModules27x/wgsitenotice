@@ -21,25 +21,6 @@
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
-/**
-* @param $cats
- * @return string
- */
-function wgsitenotice_block_addCatSelect($cats) {
-    $cat_sql = '';
-    if(\is_array($cats))
-    {
-        $cat_sql = '('.current($cats);
-        \array_shift($cats);
-        foreach($cats as $cat)
-        {
-            $cat_sql .= ','.$cat;
-        }
-        $cat_sql .= ')';
-    }
-    return $cat_sql;
-}
-
 function wgsitenotice_meta_keywords($content)
 {
     global $xoopsTpl, $xoTheme;

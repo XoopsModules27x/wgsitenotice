@@ -87,13 +87,13 @@ $modversion['templates'][] = ['file' => 'wgsitenotice_index.tpl', 'description' 
 //if you create a new template in wgsitenotice/templates/user/ then add here the folder name and modversion['templates']
 $arr_templates = ['default' => 'default', 'table' => 'table-style', 'block' => 'block-style', 'xbootstrap' => 'xbootstrap'];
 $modversion['config'][] = [
-    'name' => 'wgsitenotice_template',
-    'title' => '_MI_WGSITENOTICE_TEMPLATE',
+    'name'        => 'wgsitenotice_template',
+    'title'       => '_MI_WGSITENOTICE_TEMPLATE',
     'description' => '_MI_WGSITENOTICE_TEMPLATE_DESC',
-    'formtype' => 'select',
-    'valuetype' => 'text',
-    'options' => \array_flip($arr_templates),
-    'default' => 'default'
+    'formtype'    => 'select',
+    'valuetype'   => 'text',
+    'options'     => \array_flip($arr_templates),
+    'default'     => 'default'
 ];
 $modversion['templates'][] = ['file' => 'user/default/wgsitenotice_index_default.tpl', 'description' => ''];
 $modversion['templates'][] = ['file' => 'user/table/wgsitenotice_index_table.tpl', 'description' => ''];
@@ -130,49 +130,49 @@ $modversion['blocks'][] = [
 \xoops_load('xoopseditorhandler');
 $editorHandler = XoopsEditorHandler::getInstance();
 $modversion['config'][] = [
-    'name' => 'wgsitenotice_editor',
-    'title' => '_MI_WGSITENOTICE_EDITOR',
+    'name'        => 'wgsitenotice_editor',
+    'title'       => '_MI_WGSITENOTICE_EDITOR',
     'description' => '_MI_WGSITENOTICE_EDITOR_DESC',
-    'formtype' => 'select',
-    'valuetype' => 'text',
-    'options' => \array_flip($editorHandler->getList()),
-    'default' => 'dhtmltextarea'
+    'formtype'    => 'select',
+    'valuetype'   => 'text',
+    'options'     => \array_flip($editorHandler->getList()),
+    'default'     => 'dhtmltextarea'
 ];
 
 $modversion['config'][] = [
-    'name' => 'wgsitenotice_oc_server',
-    'title' => '_MI_WGSITENOTICE_OC_SERVER',
+    'name'        => 'wgsitenotice_oc_server',
+    'title'       => '_MI_WGSITENOTICE_OC_SERVER',
     'description' => '_MI_WGSITENOTICE_OC_SERVER_DESC',
-    'formtype' => 'textbox',
-    'valuetype' => 'text',
-    'default' => 'https://xoops.wedega.com/modules/wgsitenotice/'
+    'formtype'    => 'textbox',
+    'valuetype'   => 'text',
+    'default'     => 'https://xoops.wedega.com/modules/wgsitenotice/'
 ];
 
 $modversion['config'][] = [
-    'name' => 'wgsitenotice_oc_allowed',
-    'title' => '_MI_WGSITENOTICE_OC_ALLOWED',
+    'name'        => 'wgsitenotice_oc_allowed',
+    'title'       => '_MI_WGSITENOTICE_OC_ALLOWED',
     'description' => '_MI_WGSITENOTICE_OC_ALLOWED_DESC',
-    'formtype' => 'yesno',
-    'valuetype' => 'int',
-    'default' => 0
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 0
 ];
 
 $modversion['config'][] = [
-    'name' => 'keywords',
-    'title' => '_MI_WGSITENOTICE_KEYWORDS',
+    'name'        => 'keywords',
+    'title'       => '_MI_WGSITENOTICE_KEYWORDS',
     'description' => '_MI_WGSITENOTICE_KEYWORDS_DESC',
-    'formtype' => 'textbox',
-    'valuetype' => 'text',
-    'default' => 'wgsitenotice, versions, contents, checkonline'
+    'formtype'    => 'textbox',
+    'valuetype'   => 'text',
+    'default'     => 'wgsitenotice, versions, contents, checkonline'
 ];
 
 $modversion['config'][] = [
-    'name' => 'adminpager',
-    'title' => '_MI_WGSITENOTICE_ADMINPAGER',
+    'name'        => 'adminpager',
+    'title'       => '_MI_WGSITENOTICE_ADMINPAGER',
     'description' => '_MI_WGSITENOTICE_ADMINPAGER_DESC',
-    'formtype' => 'textbox',
-    'valuetype' => 'int',
-    'default' => 10
+    'formtype'    => 'textbox',
+    'valuetype'   => 'int',
+    'default'     => 10
 ];
 
 // Show copyright
